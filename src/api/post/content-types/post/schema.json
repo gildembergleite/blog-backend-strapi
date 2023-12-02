@@ -4,7 +4,8 @@
   "info": {
     "singularName": "post",
     "pluralName": "posts",
-    "displayName": "Post"
+    "displayName": "Post",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -26,12 +27,12 @@
       "targetField": "title"
     },
     "cover": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "content": {
       "type": "richtext",
@@ -40,6 +41,18 @@
     "date": {
       "type": "date",
       "required": true
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "posts"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "posts"
     }
   }
 }

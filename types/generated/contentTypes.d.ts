@@ -692,6 +692,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     slug: Attribute.UID<'api::author.author', 'name'>;
     bio: Attribute.Text;
     avatar: Attribute.Media;
+    posts: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::post.post'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -715,6 +720,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     singularName: 'post';
     pluralName: 'posts';
     displayName: 'Post';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -726,6 +732,12 @@ export interface ApiPostPost extends Schema.CollectionType {
     cover: Attribute.Media & Attribute.Required;
     content: Attribute.RichText & Attribute.Required;
     date: Attribute.Date & Attribute.Required;
+    author: Attribute.Relation<
+      'api::post.post',
+      'manyToOne',
+      'api::author.author'
+    >;
+    tags: Attribute.Relation<'api::post.post', 'manyToMany', 'api::tag.tag'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
@@ -748,6 +760,7 @@ export interface ApiTagTag extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.UID<'api::tag.tag', 'name'> & Attribute.Required;
+    posts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::post.post'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
