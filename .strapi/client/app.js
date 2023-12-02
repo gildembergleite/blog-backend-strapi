@@ -4,6 +4,7 @@
  */
 import fieldUuid from "@bn-digital/strapi-plugin-field-uuid/strapi-admin";
 import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
+import documentation from "@strapi/plugin-documentation/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
@@ -12,6 +13,7 @@ renderAdmin(document.getElementById("strapi"), {
   plugins: {
     "field-uuid": fieldUuid,
     "strapi-cloud": strapiCloud,
+    documentation: documentation,
     i18n: i18N,
     "users-permissions": usersPermissions,
   },
