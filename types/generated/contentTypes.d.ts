@@ -368,13 +368,14 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     singularName: 'author';
     pluralName: 'authors';
     displayName: 'Author';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    slug: Attribute.UID<'api::author.author', 'name'>;
+    name: Attribute.String;
+    slug: Attribute.UID<'api::author.author', 'name'> & Attribute.Required;
     bio: Attribute.Text;
     avatar: Attribute.Media;
     posts: Attribute.Relation<
@@ -411,12 +412,11 @@ export interface ApiPostPost extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    uuid: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.UID<'api::post.post', 'title'>;
-    cover: Attribute.Media & Attribute.Required;
-    content: Attribute.RichText & Attribute.Required;
-    date: Attribute.Date & Attribute.Required;
+    date: Attribute.Date;
+    cover_url: Attribute.String;
+    cotent: Attribute.Blocks;
     author: Attribute.Relation<
       'api::post.post',
       'manyToOne',
@@ -438,13 +438,14 @@ export interface ApiTagTag extends Schema.CollectionType {
     singularName: 'tag';
     pluralName: 'tags';
     displayName: 'Tag';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    slug: Attribute.UID<'api::tag.tag', 'name'> & Attribute.Required;
+    name: Attribute.String;
+    slug: Attribute.UID<'api::tag.tag', 'name'>;
     posts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::post.post'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

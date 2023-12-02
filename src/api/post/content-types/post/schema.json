@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "uuid": {
-      "type": "customField",
-      "regex": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-      "customField": "plugin::field-uuid.uuid"
-    },
     "title": {
       "type": "string",
       "required": true,
@@ -26,21 +21,15 @@
       "type": "uid",
       "targetField": "title"
     },
-    "cover": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "content": {
-      "type": "richtext",
-      "required": true
-    },
     "date": {
       "type": "date",
-      "required": true
+      "required": false
+    },
+    "cover_url": {
+      "type": "string"
+    },
+    "cotent": {
+      "type": "blocks"
     },
     "author": {
       "type": "relation",
