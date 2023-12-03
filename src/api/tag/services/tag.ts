@@ -11,7 +11,8 @@ export default factories.createCoreService('api::tag.tag', () => ({
       populate: {
         posts: {
           populate: {
-            author: true
+            author: true,
+            tags: true
           }
         }
       }
