@@ -14,14 +14,6 @@ async function getData() {
   return posts.data
 }
 
-async function getByName(name, entityService) {
-  const results = await strapi.db.query(entityService).findMany({
-    where: { name: { $containsi: name} }
-  })
-  
-  return results.length > 0 ? results[0] : null
-}
-
 async function removeDuplicateItems(posts) {
   let arrayJoin = []
   
@@ -39,7 +31,7 @@ async function updateAuthors() {
   const posts = await getData()
   
   posts.map(async (post) => {
-    const author = await getByName(post.author, authorService)
+    const author = await strapi.service(authorService).findByName(post.author, authorService)
     if (author === null) {
       await strapi.service(authorService).create({
         data: {
@@ -56,7 +48,7 @@ async function updateTags() {
   const uniqueArray = await removeDuplicateItems(posts)
 
   uniqueArray.map(async (tag) => {
-    const tagName = await getByName(tag, tagService)
+    const tagName = await strapi.service(authorService).findByName(tag, tagService)
     if (tagName === null) {
       await strapi.service(tagService).create({
         data: {
@@ -72,9 +64,9 @@ async function updatePosts() {
   const posts = await getData();
 
   posts.map(async (post) => {
-    const author = await getByName(post.author, authorService);
+    const author = await strapi.service(authorService).findByName(post.author, authorService);
     const tags = await Promise.all(post.tags.map(async (tag) => {
-      return await getByName(tag, tagService);
+      return await strapi.service(authorService).findByName(tag, tagService);
     }));
 
     await strapi.entityService.create(postService, {
@@ -96,5 +88,15 @@ export default factories.createCoreController(postService, () => ({
     await updateAuthors()
     await updateTags()
     await updatePosts()
+  },
+  async findPostsByAuthor(ctx) {
+    try {
+      const slug = ctx.params.slug
+      console.log(slug)
+      const entries = await strapi.service('api::post.post').findBySlug(slug)
+      ctx.body = entries
+    } catch (error) {
+      console.error(error)
+    }
   }
 }));
