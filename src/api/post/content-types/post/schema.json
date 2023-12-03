@@ -28,9 +28,6 @@
     "cover_url": {
       "type": "string"
     },
-    "cotent": {
-      "type": "blocks"
-    },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
@@ -42,6 +39,9 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "inversedBy": "posts"
+    },
+    "content": {
+      "type": "text"
     }
   }
 }

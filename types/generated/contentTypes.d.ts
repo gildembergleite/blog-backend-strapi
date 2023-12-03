@@ -416,13 +416,13 @@ export interface ApiPostPost extends Schema.CollectionType {
     slug: Attribute.UID<'api::post.post', 'title'>;
     date: Attribute.Date;
     cover_url: Attribute.String;
-    cotent: Attribute.Blocks;
     author: Attribute.Relation<
       'api::post.post',
       'manyToOne',
       'api::author.author'
     >;
     tags: Attribute.Relation<'api::post.post', 'manyToMany', 'api::tag.tag'>;
+    content: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-12-02T20:04:00.147Z"
+    "x-generation-date": "2023-12-02T20:58:22.041Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -846,7 +846,6 @@
                         "cover_url": {
                           "type": "string"
                         },
-                        "cotent": {},
                         "author": {
                           "type": "object",
                           "properties": {
@@ -1164,6 +1163,9 @@
                             }
                           }
                         },
+                        "content": {
+                          "type": "string"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -1304,7 +1306,6 @@
               "cover_url": {
                 "type": "string"
               },
-              "cotent": {},
               "author": {
                 "oneOf": [
                   {
@@ -1329,6 +1330,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "content": {
+                "type": "string"
               }
             }
           }
@@ -1399,7 +1403,6 @@
           "cover_url": {
             "type": "string"
           },
-          "cotent": {},
           "author": {
             "type": "object",
             "properties": {
@@ -2070,7 +2073,6 @@
                                     "cover_url": {
                                       "type": "string"
                                     },
-                                    "cotent": {},
                                     "author": {
                                       "type": "object",
                                       "properties": {
@@ -2176,6 +2178,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "content": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -2293,6 +2298,9 @@
                 }
               }
             }
+          },
+          "content": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -2475,7 +2483,6 @@
                         "cover_url": {
                           "type": "string"
                         },
-                        "cotent": {},
                         "author": {
                           "type": "object",
                           "properties": {
@@ -3275,6 +3282,9 @@
                               }
                             }
                           }
+                        },
+                        "content": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string",
