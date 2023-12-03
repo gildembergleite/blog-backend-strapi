@@ -9,6 +9,11 @@ export default {
       method: 'GET',
       path: '/posts/author/:slug',
       handler: 'post.findPostsByAuthor'
+    },
+    {
+      method: 'GET',
+      path: '/posts/name/:slug',
+      handler: 'post.findPostsBySlug'
     }
   ]
 }

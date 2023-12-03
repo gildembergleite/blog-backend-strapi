@@ -101,7 +101,17 @@ export default factories.createCoreController(postService, () => ({
     try {
       const slug = ctx.params.slug
       console.log(slug)
-      const entries = await strapi.service('api::post.post').findBySlug(slug)
+      const entries = await strapi.service('api::post.post').findByAuthorSlug(slug)
+      ctx.body = entries
+    } catch (error) {
+      console.error(error)
+    }
+  },
+  async findPostsBySlug(ctx) {
+    try {
+      const slug = ctx.params.slug
+      console.log(slug)
+      const entries = await strapi.service('api::post.post').findByPostSlug(slug)
       ctx.body = entries
     } catch (error) {
       console.error(error)
